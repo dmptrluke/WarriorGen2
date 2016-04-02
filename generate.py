@@ -38,7 +38,7 @@ cat["name"] = "Failtail"
 # Gender
 cat["gender"] = random.choice(["male", "female"])
 cat["gender_objective"] = "his" if cat["gender"] == "male" else "her"
-cat["gender_pronoun"] = "he" if cat["gender"] == "male" else "she"
+cat["gender_pronoun"] = "He" if cat["gender"] == "male" else "She"
 cat["gender_warrior"] = "tom" if cat["gender"] == "male" else "she-cat"
 
 # Warrior Cats Specific Details
@@ -50,7 +50,7 @@ else:
 cat["rank"] = weighted_choice(ranks)
 
 # Basic Pelt
-cat["pelt_colour"] = random.choice(colours.keys())
+cat["pelt_colour"] = random.choice(list(colours))
 cat["pelt_texture"] = random.choice(["sleek", "thick", "fluffy", "silky", "rough", "bushy", "matted"])
 cat["pelt_length"] = random.choice(["short", "long", "medium-length", "very long", "very short"])
 cat["pelt_shade"] = random.choice(["dark", "deep", "faded", "light", "pale", "mottled", "murky", "very dark", "dappled", "bright"])
@@ -70,7 +70,7 @@ if cat["tabby_type"]:
 else:
     marking_count = random.randint(0, 2)
 
-for marking in xrange(marking_count):
+for marking in range(marking_count):
     text = random.choice(marking_types)
     colour = random.choice(secondary_colours)
 
@@ -91,7 +91,6 @@ cat["clan"] = random.choice(["ThunderClan", "RiverClan", "WindClan", "ShadowClan
 
 # Build Output
 
-print "FAILTAIL:"
 
 if cat["tabby_type"]:
     output = "A {pelt_shade} {pelt_colour} {tabby_type} tabby {gender_warrior} ".format(**cat)
@@ -112,4 +111,4 @@ else:
 
 output += "{gender_pronoun} is a {body_size}, {body_build} {rank} of {clan}. ".format(**cat)
 
-print output
+print(output)
